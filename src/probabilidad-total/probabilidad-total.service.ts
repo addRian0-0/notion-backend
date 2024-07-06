@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import { CreateProbabilidadTotalDto } from './dto/create-probabilidad-total.dto';
-import { UpdateProbabilidadTotalDto } from './dto/update-probabilidad-total.dto';
+
+import { CreateProbabilidadTotalDto } from './dto/probabilidad-total/create-probabilidad-total.dto';
+import { UpdateProbabilidadTotalDto } from './dto/probabilidad-total/update-probabilidad-total.dto';
 
 @Injectable()
 export class ProbabilidadTotalService {
