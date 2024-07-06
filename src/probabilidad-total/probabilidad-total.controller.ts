@@ -1,7 +1,8 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+
 import { ProbabilidadTotalService } from './probabilidad-total.service';
-import { CreateProbabilidadTotalDto } from './dto/create-probabilidad-total.dto';
-import { UpdateProbabilidadTotalDto } from './dto/update-probabilidad-total.dto';
+import { CreateProbabilidadTotalDto } from './dto/probabilidad-total/create-probabilidad-total.dto';
+import { UpdateProbabilidadTotalDto } from './dto/probabilidad-total/update-probabilidad-total.dto';
 
 @Controller('probabilidad-total')
 export class ProbabilidadTotalController {
