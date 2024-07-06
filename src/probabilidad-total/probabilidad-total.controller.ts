@@ -3,10 +3,11 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { ProbabilidadTotalService } from './probabilidad-total.service';
 import { CreateProbabilidadTotalDto } from './dto/probabilidad-total/create-probabilidad-total.dto';
 import { UpdateProbabilidadTotalDto } from './dto/probabilidad-total/update-probabilidad-total.dto';
+import { RiesgoI } from './interface/riesgos.interface';
 
 @Controller('riesgos')
 export class ProbabilidadTotalController {
-  constructor(private readonly probabilidadTotalService: ProbabilidadTotalService) {}
+  constructor(private readonly probabilidadTotalService: ProbabilidadTotalService) { }
 
 
   riesgos = [
@@ -40,27 +41,27 @@ export class ProbabilidadTotalController {
       "impacto": 65,
       "probabilidad": 55
     }
-]; 
+  ];
 
-  // @Post()
-  // create(@Body() createProbabilidadTotalDto: CreateProbabilidadTotalDto) {
-  //   this.riesgo.push( createProbabilidadTotalDto )
-  // }
+  @Post("/calculate")
+  calculateRiesgosController(@Body() createProbabilidadTotalDto: RiesgoI[]) {
+    return this.probabilidadTotalService.calculateRiesgos(createProbabilidadTotalDto)
+  }
 
   @Get()
   findAll() {
     let riesgoPonderado: number;
-    
+
     for (const riesgo of this.riesgos) {
       riesgoPonderado = +riesgo.probabilidad
     }
-    
+
     return this.riesgos;
   }
 
   @Get('riesgo/:id')
   findOne(@Param('id') id: string) {
-    
+
     // const riesgoInteres = this.riesgos.find( riesgo => id === riesgo.id ); 
     // return riesgoInteres;
   }
@@ -74,4 +75,5 @@ export class ProbabilidadTotalController {
   remove(@Param('id') id: string) {
     return this.probabilidadTotalService.remove(+id);
   }
+
 }
