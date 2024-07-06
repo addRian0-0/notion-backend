@@ -43,7 +43,7 @@ export class ProbabilidadTotalController {
     }
 ]; 
 
-  @Post("/calculate")
+  @Post("calculate")
   create(@Body() createProbabilidadTotalDto: RiesgoI[]) {
     return this.probabilidadTotalService.calculateRiesgos( createProbabilidadTotalDto )
   }
@@ -64,6 +64,7 @@ export class ProbabilidadTotalController {
     
     // const riesgoInteres = this.riesgos.find( riesgo => id === riesgo.id ); 
     // return riesgoInteres;
+    return id;
   }
 
   @Patch('riesgo/:id')
