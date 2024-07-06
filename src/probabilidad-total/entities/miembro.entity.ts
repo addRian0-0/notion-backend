@@ -1,22 +1,33 @@
-import { IsNumber, IsPositive, IsString, Max, Min, MinLength } from 'class-validator';
+import { Prop, Schema } from '@nestjs/mongoose';
+import { Document } from 'mongoose';
 
-export class Miembro{
-    @IsPositive({
-        message: '"id" must be major than 0',
+@Schema()
+export class Miembro extends Document{
+    
+    @Prop({
+        instance: true,
+        unique:   true,
     })
-    id:                number;
-    @IsString()
-    @MinLength( 4, {
-        message: '"cargo" must be more specific'
+    id: string;
+
+    @Prop({
+        instance: true,
     })
-    cargo:             string;
-    @IsString()
-    @MinLength( 4, {
-        message: '"impacto" must be more specific'
+    miembro: string;
+    
+    @Prop({
+        instance: true,
     })
-    impacto:           string;
-    @IsNumber()
-    @Min(0)
-    @Max(100)
-    probabilidadFallo: string;
+    cargo: string
+
+    @Prop({
+        instance: true,
+    })
+    impacto: string;
+    
+    @Prop({
+        instance: true,
+    })
+    probabilidadFallo: number;
+
 }
