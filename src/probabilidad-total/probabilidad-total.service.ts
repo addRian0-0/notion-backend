@@ -42,17 +42,35 @@ export class ProbabilidadTotalService {
 
   
 
-  calculateRiesgos( riesgosF: RiesgoI[]): RiesgosCalculados{
+  calculateRiesgos( riesgosF: RiesgoI[]){
+    console.log(riesgosF);
     let riesgosCalculadosArr: RiesgosCalculados;
+    let arr2 = [];
     riesgosF.forEach(r => {
-      let calculo =  r.impacto * r.probabilidad
-      riesgosCalculadosArr.riesgosIndividualesCalculados.push({
-        ...r,
+      let calculo =  (r.impacto / 10) * (r.probabilidad/10);
+      let obj = {
+        id: r.id,
+        nombre: r.nombre,
+        impacto: r.impacto,
+        probabilidad: r.probabilidad,
         calculo
-      })
-      riesgosCalculadosArr.riesgoPonderado += calculo; 
+      }
+      arr2.push(obj) 
     })
-    return riesgosCalculadosArr;
+    let calculoT = 0;
+
+    arr2.map(e => {
+      calculoT+= e.calculo
+    })
+    console.log({
+      arr2,
+      calculoT
+    })
+    calculoT = calculoT / arr2.length;
+    return {
+      arr2,
+      calculoT
+    };
   }
 
   create( createProbabilidadTotalDto: CreateProbabilidadTotalDto ) {
