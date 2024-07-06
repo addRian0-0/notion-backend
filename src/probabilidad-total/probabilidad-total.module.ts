@@ -6,5 +6,6 @@ import { MiembroService } from './miembro/miembro.service';
 @Module({
   controllers: [ ProbabilidadTotalController ],
   providers: [ ProbabilidadTotalService, MiembroService],
+  exports: [ MiembroService ]
 })
 export class ProbabilidadTotalModule {}
