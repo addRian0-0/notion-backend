@@ -5,6 +5,11 @@ export class CreateMiembro {
         message: '"id" must be major than 0',
     })
     id:                number;
+
+    @IsString()
+    @MinLength(3)
+    nombre: string;
+
     @IsString()
     @MinLength( 4, {
         message: '"cargo" must be more specific'
