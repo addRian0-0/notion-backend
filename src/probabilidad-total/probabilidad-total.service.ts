@@ -5,8 +5,9 @@ import { UpdateProbabilidadTotalDto } from './dto/probabilidad-total/update-prob
 
 @Injectable()
 export class ProbabilidadTotalService {
-  create(createProbabilidadTotalDto: CreateProbabilidadTotalDto) {
-    return 'This action adds a new probabilidadTotal';
+
+  create( createProbabilidadTotalDto: CreateProbabilidadTotalDto ) {
+    //
   }
 
   findAll() {
