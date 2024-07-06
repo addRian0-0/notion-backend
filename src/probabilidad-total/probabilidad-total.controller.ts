@@ -7,7 +7,7 @@ import { RiesgoI } from './interface/riesgos.interface';
 
 @Controller('riesgos')
 export class ProbabilidadTotalController {
-  constructor(private readonly probabilidadTotalService: ProbabilidadTotalService) { }
+  constructor(private readonly probabilidadTotalService: ProbabilidadTotalService) {}
 
 
   riesgos = [
@@ -41,27 +41,27 @@ export class ProbabilidadTotalController {
       "impacto": 65,
       "probabilidad": 55
     }
-  ];
+]; 
 
   @Post("/calculate")
-  calculateRiesgosController(@Body() createProbabilidadTotalDto: RiesgoI[]) {
-    return this.probabilidadTotalService.calculateRiesgos(createProbabilidadTotalDto)
+  create(@Body() createProbabilidadTotalDto: RiesgoI[]) {
+    return this.probabilidadTotalService.calculateRiesgos( createProbabilidadTotalDto )
   }
 
   @Get()
   findAll() {
     let riesgoPonderado: number;
-
+    
     for (const riesgo of this.riesgos) {
       riesgoPonderado = +riesgo.probabilidad
     }
-
+    
     return this.riesgos;
   }
 
   @Get('riesgo/:id')
   findOne(@Param('id') id: string) {
-
+    
     // const riesgoInteres = this.riesgos.find( riesgo => id === riesgo.id ); 
     // return riesgoInteres;
   }
